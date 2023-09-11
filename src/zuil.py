@@ -28,7 +28,8 @@ with open(f'{os.path.dirname(__file__)}/../comments.csv', 'w', encoding='UTF8') 
     writer = csv.writer(f)
 
     # write the header
-    writer.writerow(csv_headers)
+    # TODO make it so when the file doenst exist it creates the file and sets the headers
+    # writer.writerow(csv_headers)
 
     # write the data
     writer.writerow(data)
