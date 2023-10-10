@@ -24,7 +24,7 @@ station = random.choice(stations)
 # write to file
 data = [name, station, time, re.escape(message)]
 
-with open(f'{os.path.dirname(__file__)}/../comments.csv', 'w', encoding='UTF8') as f:
+with open(f'{os.path.dirname(__file__)}/../comments.csv', 'a', encoding='UTF8') as f:
     writer = csv.writer(f)
 
     # write the header
