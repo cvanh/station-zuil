@@ -27,9 +27,5 @@ data = [name, station, time, re.escape(message)]
 with open(f'{os.path.dirname(__file__)}/../comments.csv', 'a') as f:
     writer = csv.writer(f,lineterminator="\n",dialect="unix")
 
-    # write the header
-    # TODO make it so when the file doenst exist it creates the file and sets the headers
-    # writer.writerow(csv_headers)
-
-    # write the data
+    # write data to a new line in the csv
     writer.writerow(data)

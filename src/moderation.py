@@ -1,7 +1,7 @@
 # /usr/bin/env python
 from clint.textui import prompt
 import csv
-from lib.db import db
+from utils.db import db
 
 # get entries of unmoderated comments
 def get_entries():
