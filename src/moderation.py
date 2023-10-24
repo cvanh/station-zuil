@@ -55,6 +55,7 @@ if __name__ == '__main__':
     for comment in mod_queue:
         is_comment_approved = moderation_menu(comment)
 
+    # TODO also insert which moderator approved it when and include declined comments
         if is_comment_approved: 
             accepted_comments.append(comment)
     

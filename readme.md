@@ -9,6 +9,12 @@ here the users can enter their comment about the station and saves this info to 
 moderation:
 here the comments are censored and uploaded to the database
 
+requirements
+- [] of het bericht is goedgekeurd of afgekeurd;
+- [] de datum en tijd van beoordeling;
+- [] de naam van moderator die het bericht heeft beoordeeld;
+- [] het email-adres van de moderator.
+
 screen:
 this fetches the censored comments and displays them
 
