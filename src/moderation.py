@@ -1,38 +1,62 @@
 # /usr/bin/env python
-import sys
-import os
-import pandas as pd
 from clint.textui import prompt
-
-sys.path.insert(0, os.path.abspath('..'))
-
-# pandas normal limit is 60 but we want to increment it
-pd.options.display.max_rows = 9999
+import csv
+from lib.db import db
 
 # get entries of unmoderated comments
 def get_entries():
-    unparsed_csv = pd.read_csv("../comments.csv",nrows=99999)
-    print(unparsed_csv)
-    return unparsed_csv.to_json()
+    unparsed_csv = open("comments.csv","r") 
 
-# the menu that allowes the use to remove or approve 
-def mod_menu():
-    inst_options = [{'selector':'1','prompt':'remove','return':'remove'},
-                    {'selector':'2','prompt':'approve','return':'approve'}]
+    # parse the csv
+    csvreader = csv.reader(unparsed_csv, delimiter=',',lineterminator="")
 
-    inst = prompt.options("Full or Partial Install", inst_options)
+    # we want a simple array for our comments
+    array = []
+    for index,row in enumerate(csvreader):
+        # we dont want to add the csv headers to our array so we dont add it
+        array.append(row)
+
+    return array
+
+
+# the menu that allowes the use to remove or approve and shows the comment 
+def moderation_menu(comment):
+    print(f"{comment[0]} said: {comment[3]} on {comment[2]} on station: {comment[1]}")
+    inst_options = [{'selector':'1','prompt':'verwijderen','return': False},
+                    {'selector':'2','prompt':'doorlaten','return': True}]
+
+    inst = prompt.options("comment doorlaten of verwijderen?", inst_options)
 
     return inst
 
+# whiteout the file by writing empty string
+def clean_comments_csv():
+    file = open("comments.csv","w") 
+    file.write("")
+    file.close()
+
+def insert_comments_to_database(comments):
+    conn = db()
+
+    # we insert comment per comment 
+    for comment in comments:
+        conn.execute(
+        f"""
+        INSERT INTO comments(
+    	"name", "station", "time", "message")
+	    VALUES ('{comment[0]}', '{comment[1]}', {comment[2]}, '{comment[3]}');
+        """)
+    
 if __name__ == '__main__':
     mod_queue = get_entries()
-    print(mod_queue)
 
+    # for item in mod_queue:
+    accepted_comments = []
     for comment in mod_queue:
-        print(comment)
-        mod_menu()
+        is_comment_approved = moderation_menu(comment)
 
-
-
-
-
+        if is_comment_approved: 
+            accepted_comments.append(comment)
+    
+    insert_comments_to_database(accepted_comments)
+    clean_comments_csv()

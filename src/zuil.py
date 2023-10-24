@@ -17,7 +17,7 @@ message = input("message?:")
 name = input("name?:")
 
 # generate value's we need
-time = time.time()
+time = int(time.time())
 station = random.choice(stations)
 
 
@@ -25,7 +25,7 @@ station = random.choice(stations)
 data = [name, station, time, re.escape(message)]
 
 with open(f'{os.path.dirname(__file__)}/../comments.csv', 'a') as f:
-    writer = csv.writer(f,lineterminator="\n")
+    writer = csv.writer(f,lineterminator="\n",dialect="unix")
 
     # write the header
     # TODO make it so when the file doenst exist it creates the file and sets the headers

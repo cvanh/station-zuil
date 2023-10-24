@@ -1,1 +1,1 @@
-CSV_HEADERS = []
+CSV_HEADERS = ["name", "station", "time", "message"]
