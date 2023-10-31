@@ -7,12 +7,11 @@ services:
     restart: always
     volumes:
       - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
-      - ./init-user.sh:/etc/mysql/conf.d/init-user.sh
     environment:
       POSTGRES_PASSWORD: example
       POSTGRES_USER: docker
     ports:
-      - 8306:3006
+      - 8306:5432
 
   adminer:
     image: adminer
