@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.4 (Ubuntu 15.4-2.pgdg22.04+1)
--- Dumped by pg_dump version 15.4 (Ubuntu 15.4-2.pgdg22.04+1)
+-- Dumped from database version 16.0 (Debian 16.0-1.pgdg120+1)
+-- Dumped by pg_dump version 16.0 (Ubuntu 16.0-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -72,6 +72,15 @@ ALTER TABLE public.station_service OWNER TO docker;
 --
 
 COPY public.comments (name, station, message, "time", status, last_edit_time, last_edit_by, id) FROM stdin;
+dasda	leiden	asdsa	1698755665	published	2023-10-31 18:46:04.81422	f124b7cf-324f-45d9-9352-24181116e7a4	20052d2a-c360-42c2-a023-b1deadd85992
+asd	den haag	asdasd	1698755667	published	2023-10-31 18:46:05.193741	f124b7cf-324f-45d9-9352-24181116e7a4	176bd69f-0c36-4e32-ba88-3ab4921f9a71
+asdasdasdsadasd	amsterdam	asdasd	1698755670	published	2023-10-31 18:46:05.521155	f124b7cf-324f-45d9-9352-24181116e7a4	e4200f60-1c70-44b3-92c2-39a33a5fdaa0
+fgt	den haag	asdrjehgnrg	1698755673	published	2023-10-31 18:46:05.839173	f124b7cf-324f-45d9-9352-24181116e7a4	e70948fe-de05-489e-bca0-5d37a54432f6
+kaas	amsterdam	kaas	1698774346	published	2023-10-31 18:46:06.173417	f124b7cf-324f-45d9-9352-24181116e7a4	082e76a7-e873-40f6-999c-1fcdddbb7222
+sad	den haag	asdasd	1698774347	published	2023-10-31 18:46:06.597649	f124b7cf-324f-45d9-9352-24181116e7a4	fc583456-78ab-458c-920a-83d4e6e31c42
+[Aasd	amsterdam	asdasd	1698774349	published	2023-10-31 18:46:07.013249	f124b7cf-324f-45d9-9352-24181116e7a4	8b7c2d61-67bc-4f42-9e93-a528fc4acf0c
+asdasd	leiden	asdasdasd	1698774353	published	2023-10-31 18:46:07.433608	f124b7cf-324f-45d9-9352-24181116e7a4	658b8600-544f-4fa7-8bb0-ca3f58c61108
+asda	leiden	sadasdasd	1698774356	published	2023-10-31 18:46:07.841441	f124b7cf-324f-45d9-9352-24181116e7a4	3c8c257e-d936-4d81-9846-ce50f8824b98
 \.
 
 
