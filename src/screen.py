@@ -4,6 +4,7 @@ import requests
 import os
 from tkinter import *
 from tkinter import ttk
+# import tkinter as ttk
 from utils.db import db
 load_dotenv()
 
@@ -55,6 +56,7 @@ class getters:
 class screen(getters):
     def __init__(self) -> None:
         super().__init__("Arnhem")
+        self.draw()
 
     def draw():
         root = Tk()
