@@ -9,11 +9,13 @@ class db:
         self.dbname = os.environ["DBNAME"]
         self.user = os.environ["USER"]
         self.password = os.environ["PASSWORD"]
+        self.dbhost = os.environ["DBHOST"]
+        self.dbport = os.environ["DBPORT"]
 
         self.connect() 
     
     def connect(self):
-        self.conn = psycopg2.connect(dbname=self.dbname, user=self.user, password=self.password) 
+        self.conn = psycopg2.connect(host=self.dbhost, post=self.dbport,dbname=self.dbname, user=self.user, password=self.password) 
         self.cur = self.conn.cursor()
 
     def disconnect(self):

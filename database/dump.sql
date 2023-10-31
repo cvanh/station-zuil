@@ -21,7 +21,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: comments; Type: TABLE; Schema: public; Owner: constantijn
+-- Name: comments; Type: TABLE; Schema: public; Owner: docker
 --
 
 CREATE TABLE public.comments (
@@ -36,7 +36,7 @@ CREATE TABLE public.comments (
 );
 
 
-ALTER TABLE public.comments OWNER TO constantijn;
+ALTER TABLE public.comments OWNER TO docker;
 
 --
 -- Name: moderators; Type: TABLE; Schema: public; Owner: root
@@ -52,7 +52,7 @@ CREATE TABLE public.moderators (
 ALTER TABLE public.moderators OWNER TO root;
 
 --
--- Name: station_service; Type: TABLE; Schema: public; Owner: constantijn
+-- Name: station_service; Type: TABLE; Schema: public; Owner: docker
 --
 
 CREATE TABLE public.station_service (
@@ -65,10 +65,10 @@ CREATE TABLE public.station_service (
 );
 
 
-ALTER TABLE public.station_service OWNER TO constantijn;
+ALTER TABLE public.station_service OWNER TO docker;
 
 --
--- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: constantijn
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: docker
 --
 
 COPY public.comments (name, station, message, "time", status, last_edit_time, last_edit_by, id) FROM stdin;
@@ -84,7 +84,7 @@ COPY public.moderators (id, name, email) FROM stdin;
 
 
 --
--- Data for Name: station_service; Type: TABLE DATA; Schema: public; Owner: constantijn
+-- Data for Name: station_service; Type: TABLE DATA; Schema: public; Owner: docker
 --
 
 COPY public.station_service (station_city, country, ov_bike, elevator, toilet, park_and_ride) FROM stdin;
@@ -132,7 +132,7 @@ Zutphen	NL	f	t	f	t
 
 
 --
--- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: constantijn
+-- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: docker
 --
 
 ALTER TABLE ONLY public.comments
@@ -148,7 +148,7 @@ ALTER TABLE ONLY public.moderators
 
 
 --
--- Name: station_service station_service_pkey; Type: CONSTRAINT; Schema: public; Owner: constantijn
+-- Name: station_service station_service_pkey; Type: CONSTRAINT; Schema: public; Owner: docker
 --
 
 ALTER TABLE ONLY public.station_service
