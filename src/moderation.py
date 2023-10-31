@@ -2,6 +2,12 @@
 from clint.textui import prompt
 import csv
 from utils.db import db
+import time
+from datetime import datetime
+
+# TODO make prompt
+moderator = "pieter"
+moderator_id = "f124b7cf-324f-45d9-9352-24181116e7a4"
 
 # get entries of unmoderated comments
 def get_entries():
@@ -28,9 +34,10 @@ def get_entries():
 
 # the menu that allowes the use to remove or approve and shows the comment 
 def moderation_menu(comment):
-    print(f"{comment[0]} said: {comment[3]} on {comment[2]} on station: {comment[1]}")
-    inst_options = [{'selector':'1','prompt':'verwijderen','return': False},
-                    {'selector':'2','prompt':'doorlaten','return': True}]
+    print(comment)
+    print(f"{comment['name']} said: {comment['message']} on {comment['time']} on station: {comment['station']}")
+    inst_options = [{'selector':'1','prompt':'verwijderen','return': "trashed"},
+                    {'selector':'2','prompt':'doorlaten','return': "published"}]
 
     inst = prompt.options("comment doorlaten of verwijderen?", inst_options)
 
@@ -50,8 +57,8 @@ def insert_comments_to_database(comments):
         conn.execute(
         f"""
         INSERT INTO comments(
-    	"name", "station", "time", "message")
-	    VALUES ('{comment[0]}', '{comment[1]}', {comment[2]}, '{comment[3]}');
+    	"name", "station", "time", "message","status","last_edit_time","last_edit_by","id")
+	    VALUES ('{comment['name']}', '{comment['station']}', {comment['time']}, '{comment['message']}','{comment['status']}','{comment['last_edit_time']}', '{comment['last_edit_by']}',uuid_generate_v4());
         """)
     
 if __name__ == '__main__':
@@ -59,12 +66,13 @@ if __name__ == '__main__':
 
     # for item in mod_queue:
     accepted_comments = []
-    for comment in mod_queue:
-        is_comment_approved = moderation_menu(comment)
+    for item,comment in enumerate(mod_queue):
+        mod_queue[item]["status"] = moderation_menu(comment)
+        mod_queue[item]["last_edit_time"] = datetime.fromtimestamp(time.time())
+        mod_queue[item]["last_edit_by"] = moderator_id 
 
-    # TODO also insert which moderator approved it when and include declined comments
-        if is_comment_approved: 
-            accepted_comments.append(comment)
+
+    accepted_comments.append(comment)
     
     insert_comments_to_database(accepted_comments)
-    clean_comments_csv()
+    # clean_comments_csv()

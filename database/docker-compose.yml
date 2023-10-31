@@ -1,16 +1,18 @@
-version: '3.1'
+version: "3.1"
 
 services:
   db:
-    image: mariadb
+    image: postgres
+    container_name: station_db
     restart: always
     volumes:
       - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
-      - ./custom_config.cnf:/etc/mysql/conf.d/custom_config.cnf
+      - ./init-user.sh:/etc/mysql/conf.d/init-user.sh
     environment:
-      MARIADB_ROOT_PASSWORD: example
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: docker
     ports:
-      - 8000:3006
+      - 8306:3006
 
   adminer:
     image: adminer
