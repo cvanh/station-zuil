@@ -35,7 +35,8 @@ if you got the error
 `ModuleNotFoundError: No module named '_tkinter'`
 
 link tkinter `
-ln -s /opt/homebrew/Cellar/python-tk@3.11/3.11.6/libexec/_tkinter.cpython-311-darwin.so _tkinter.cpython-311-darwin.so
+macos:
+ln -s /opt/homebrew/Cellar/python-tk@3.11/3.11.6/libexec/_tkinter.cpython-311-darwin.so ./.venv/lib/python3.11/site-packages/_tkinter.cpython-311-darwin.so
 `
 
 ## this is what school says
