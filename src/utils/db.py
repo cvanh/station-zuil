@@ -7,15 +7,15 @@ class db:
     def __init__(self):
         load_dotenv()
         self.dbname = os.environ["DBNAME"]
-        self.user = os.environ["USER"]
-        self.password = os.environ["PASSWORD"]
+        self.user = os.environ["DBUSER"]
+        self.password = os.environ["DBPASSWORD"]
         self.dbhost = os.environ["DBHOST"]
         self.dbport = os.environ["DBPORT"]
 
         self.connect() 
     
     def connect(self):
-        self.conn = psycopg2.connect(host=self.dbhost, post=self.dbport,dbname=self.dbname, user=self.user, password=self.password) 
+        self.conn = psycopg2.connect(host=self.dbhost, port=self.dbport,dbname=self.dbname, user=self.user, password=self.password) 
         self.cur = self.conn.cursor()
 
     def disconnect(self):
