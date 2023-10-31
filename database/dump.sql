@@ -39,7 +39,7 @@ CREATE TABLE public.comments (
 ALTER TABLE public.comments OWNER TO docker;
 
 --
--- Name: moderators; Type: TABLE; Schema: public; Owner: root
+-- Name: moderators; Type: TABLE; Schema: public; Owner: docker
 --
 
 CREATE TABLE public.moderators (
@@ -49,7 +49,7 @@ CREATE TABLE public.moderators (
 );
 
 
-ALTER TABLE public.moderators OWNER TO root;
+ALTER TABLE public.moderators OWNER TO docker;
 
 --
 -- Name: station_service; Type: TABLE; Schema: public; Owner: docker
@@ -76,7 +76,7 @@ COPY public.comments (name, station, message, "time", status, last_edit_time, la
 
 
 --
--- Data for Name: moderators; Type: TABLE DATA; Schema: public; Owner: root
+-- Data for Name: moderators; Type: TABLE DATA; Schema: public; Owner: docker
 --
 
 COPY public.moderators (id, name, email) FROM stdin;
@@ -140,7 +140,7 @@ ALTER TABLE ONLY public.comments
 
 
 --
--- Name: moderators moderators_pkey; Type: CONSTRAINT; Schema: public; Owner: root
+-- Name: moderators moderators_pkey; Type: CONSTRAINT; Schema: public; Owner: docker
 --
 
 ALTER TABLE ONLY public.moderators

@@ -4,6 +4,7 @@ import csv
 from utils.db import db
 import time
 from datetime import datetime
+import uuid
 
 # TODO make prompt
 moderator = "pieter"
@@ -49,6 +50,7 @@ def clean_comments_csv():
     file.write("")
     file.close()
 
+# inserts an array of comments with their meta data into the database
 def insert_comments_to_database(comments):
     conn = db()
 
@@ -58,7 +60,7 @@ def insert_comments_to_database(comments):
         f"""
         INSERT INTO comments(
     	"name", "station", "time", "message","status","last_edit_time","last_edit_by","id")
-	    VALUES ('{comment['name']}', '{comment['station']}', {comment['time']}, '{comment['message']}','{comment['status']}','{comment['last_edit_time']}', '{comment['last_edit_by']}',uuid_generate_v4());
+	    VALUES ('{comment['name']}', '{comment['station']}', {comment['time']}, '{comment['message']}','{comment['status']}','{comment['last_edit_time']}', '{comment['last_edit_by']}','{comment['id']}');
         """)
     
 if __name__ == '__main__':
@@ -70,9 +72,10 @@ if __name__ == '__main__':
         mod_queue[item]["status"] = moderation_menu(comment)
         mod_queue[item]["last_edit_time"] = datetime.fromtimestamp(time.time())
         mod_queue[item]["last_edit_by"] = moderator_id 
+        mod_queue[item]["id"] = str(uuid.uuid4())
 
-
-    accepted_comments.append(comment)
+        # once all meta data is added push it to the stack of comments that is about to get inserted 
+        accepted_comments.append(comment)
     
     insert_comments_to_database(accepted_comments)
-    # clean_comments_csv()
+    clean_comments_csv()

@@ -173,3 +173,7 @@ cython_debug/
 pyvenv.cfg
 .venv
 pip-selfcheck.json
+
+
+*.sql
+!./database/dump.sql
