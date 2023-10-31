@@ -19,6 +19,18 @@ requirements
 screen:
 this fetches the censored comments and displays them
 
+
+
+## setup
+0. install python3 and pip and docker and docker compose
+1. create a virtual env by running `python -m venv ./`
+2. activate the virtual env, you can do this on *NIX systems by running `source ./bin/activate` and on windows by deleting windows and downloading linux
+3. once the virtual env is activated install the pip packages by running `pip install -r requirements.txt`
+4. run `cp .env.example .env` and change the openweatherapi key to your own api key 
+5. run `cd database; docker compose up --build` and keep this open while you are working with the program
+
+congrats everthing is now setup, you can run any program by running `python ./src/<program>.py`
+
 ## this is what school says
 <details>
 <summery>open</summery>
