@@ -23,6 +23,7 @@ class db:
         self.cur.close()
     
     # use this one if you are making a insert query
+    @DeprecationWarning
     def insert(self,sql):
         print(sql)
         try:
@@ -32,6 +33,7 @@ class db:
             print(err)
 
     # use this one if you are making a select query
+    @DeprecationWarning
     def select(self,sql):
         try:
             self.cur.execute(sql)

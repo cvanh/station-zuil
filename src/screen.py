@@ -2,17 +2,20 @@
 from dotenv import load_dotenv
 import requests
 import os
+from tkinter import *
+from tkinter import ttk
 from utils.db import db
 load_dotenv()
 
-# weather = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'")
-
-
 class getters:
     def __init__(self,city) -> None:
+        # define for which city we want to fetch data
         self.city = city
 
+        # set up an database connection pool
         self.db = db()
+
+        # fetch the data
         self.get_facilites()
         self.get_messages()
         # self.get_weather_prediction()
@@ -52,5 +55,35 @@ class getters:
 class screen(getters):
     def __init__(self) -> None:
         super().__init__("Arnhem")
+
+    def draw():
+        root = Tk()
+        root.title("Feet to Meters")
+
+        mainframe = ttk.Frame(root, padding="3 3 12 12")
+        mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+        root.columnconfigure(0, weight=1)
+        root.rowconfigure(0, weight=1)
+
+        feet = StringVar()
+        feet_entry = ttk.Entry(mainframe, width=7, textvariable=feet)
+        feet_entry.grid(column=2, row=1, sticky=(W, E))
+
+        meters = StringVar()
+        ttk.Label(mainframe, textvariable=meters).grid(column=2, row=2, sticky=(W, E))
+
+        ttk.Button(mainframe, text="Calculate", command=calculate).grid(column=3, row=3, sticky=W)
+
+        ttk.Label(mainframe, text="feet").grid(column=3, row=1, sticky=W)
+        ttk.Label(mainframe, text="is equivalent to").grid(column=1, row=2, sticky=E)
+        ttk.Label(mainframe, text="meters").grid(column=3, row=2, sticky=W)
+
+        for child in mainframe.winfo_children(): 
+            child.grid_configure(padx=5, pady=5)
+
+        feet_entry.focus()
+        root.bind("<Return>", calculate)
+
+        root.mainloop()
 
 screen()

@@ -55,12 +55,13 @@ def insert_comments_to_database(comments):
 
     # we insert comment per comment 
     for comment in comments:
-        conn.insert(
+        conn.cur.execute(
         f"""
         INSERT INTO comments(
     	"name", "station", "time", "message","status","last_edit_time","last_edit_by","id")
 	    VALUES ('{comment['name']}', '{comment['station']}', {comment['time']}, '{comment['message']}','{comment['status']}','{comment['last_edit_time']}', '{comment['last_edit_by']}','{comment['id']}');
         """)
+        conn.conn.commit()
     
 if __name__ == '__main__':
     mod_queue = get_entries()
