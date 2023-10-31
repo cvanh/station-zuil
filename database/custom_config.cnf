@@ -1,0 +1,10 @@
+#/usr/bin/env bash
+
+echo "
+[mariadb]
+plugin_load_add = auth_ed25519
+" > /etc/mysql/conf.d/custom.cnf
+
+sudo mysql -e 'CREATE USER root@'%' IDENTIFIED VIA ed25519 USING PASSWORD('root');'
+sudo mysql -e 'GRANT SELECT ON *.* TO username@hostname IDENTIFIED VIA ed25519 USING PASSWORD('root');'
+sudo mysql -e 'FLUSH PRIVILEGES;'

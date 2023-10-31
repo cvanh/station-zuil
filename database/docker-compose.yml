@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  db:
+    image: mariadb
+    restart: always
+    volumes:
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+      - ./custom_config.cnf:/etc/mysql/conf.d/custom_config.cnf
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+    ports:
+      - 8000:3006
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

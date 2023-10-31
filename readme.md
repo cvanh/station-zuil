@@ -14,6 +14,7 @@ requirements
 - [] de datum en tijd van beoordeling;
 - [] de naam van moderator die het bericht heeft beoordeeld;
 - [] het email-adres van de moderator.
+- [] external database
 
 screen:
 this fetches the censored comments and displays them
