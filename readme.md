@@ -27,6 +27,15 @@ this fetches the censored comments and displays them
 2. activate the virtual env, you can do this on *NIX systems by running `source ./bin/activate` and on windows by deleting windows and downloading linux
 3. once the virtual env is activated install the pip packages by running `pip install -r requirements.txt`
 4. run `cp .env.example .env` and change the openweatherapi key to your own api key 
+```
+cat << EOF
+DBHOST=localhost
+DBPORT=8306
+DBNAME=docker
+DBUSER=docker
+DBPASSWORD=example
+OPENWEATHER_API_KEY=key EOF > .env
+```
 5. run `cd database; docker compose up --build` and keep this open while you are working with the program
 
 congrats everthing is now setup, you can run any program by running `python ./src/<program>.py`

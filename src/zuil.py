@@ -10,7 +10,7 @@ import os
 csv_headers = ["name", "station", "time", "message"]
 
 # the list of random stations that are used
-stations = ["den haag", "amsterdam", "leiden"]
+stations = ["Den haag", "Amsterdam", "Leiden"]
 
 # collect data from user
 message = input("message?:")
