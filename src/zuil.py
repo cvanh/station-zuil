@@ -14,6 +14,11 @@ stations = ["den haag", "amsterdam", "leiden"]
 
 # collect data from user
 message = input("message?:")
+
+if len(message) > 140:
+    print("your message must be shorter than 140 chars")
+    exit(1)
+
 name = input("name?:")
 
 # generate value's we need
