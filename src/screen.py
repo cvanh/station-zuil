@@ -2,9 +2,8 @@
 from dotenv import load_dotenv
 import requests
 import os
-from tkinter import *
-from tkinter import ttk
-# import tkinter as ttk
+import tkinter as tk
+import datetime
 from utils.db import db
 load_dotenv()
 
@@ -23,6 +22,7 @@ class getters:
 
 
     def get_messages(self):
+        # TODO add station
         self.db.cur.execute(f"SELECT * FROM public.comments ORDER BY time DESC ")
         self.messages = self.db.cur.fetchall()
         return self.messages
@@ -53,39 +53,42 @@ class getters:
         
     
 
-class screen(getters):
-    def __init__(self) -> None:
-        super().__init__("Arnhem")
-        self.draw()
+class App(getters):
+    def __init__(self, root,city):
+        self.city = city
+        super().__init__(self.city)
 
-    def draw():
-        root = Tk()
-        root.title("Feet to Meters")
+        #setting title
+        root.title(f"{self.city} station zuil")
+        #setting window size
+        width=600
+        height=500
+        screenwidth = root.winfo_screenwidth()
+        screenheight = root.winfo_screenheight()
+        alignstr = '%dx%d+%d+%d' % (width, height, (screenwidth - width) / 2, (screenheight - height) / 2)
+        root.geometry(alignstr)
+        root.resizable(width=False, height=False)
 
-        mainframe = ttk.Frame(root, padding="3 3 12 12")
-        mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
-        root.columnconfigure(0, weight=1)
-        root.rowconfigure(0, weight=1)
+        self.draw_comments(root)
 
-        feet = StringVar()
-        feet_entry = ttk.Entry(mainframe, width=7, textvariable=feet)
-        feet_entry.grid(column=2, row=1, sticky=(W, E))
 
-        meters = StringVar()
-        ttk.Label(mainframe, textvariable=meters).grid(column=2, row=2, sticky=(W, E))
+    
+    
+    def draw_comments(self,root):
+        comments = tk.Text(root,height=50, width=50)
 
-        ttk.Button(mainframe, text="Calculate", command=calculate).grid(column=3, row=3, sticky=W)
+        # loop trough all the comments and insert them     
+        for comment in self.messages:
+            date = datetime.datetime.utcfromtimestamp(comment["time"]).strftime('%Y-%m-%d')
+            comments.insert("end",f"on {date} {comment['name']} said: {comment['message']} \n")
 
-        ttk.Label(mainframe, text="feet").grid(column=3, row=1, sticky=W)
-        ttk.Label(mainframe, text="is equivalent to").grid(column=1, row=2, sticky=E)
-        ttk.Label(mainframe, text="meters").grid(column=3, row=2, sticky=W)
+        comments.grid()
 
-        for child in mainframe.winfo_children(): 
-            child.grid_configure(padx=5, pady=5)
+        # disable text box input 
+        comments.config(state="disabled")
 
-        feet_entry.focus()
-        root.bind("<Return>", calculate)
-
-        root.mainloop()
-
-screen()
+    
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = App(root,"Arnhem")
+    root.mainloop()

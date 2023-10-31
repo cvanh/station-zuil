@@ -31,6 +31,13 @@ this fetches the censored comments and displays them
 
 congrats everthing is now setup, you can run any program by running `python ./src/<program>.py`
 
+if you got the error 
+`ModuleNotFoundError: No module named '_tkinter'`
+
+link tkinter `
+ln -s /opt/homebrew/Cellar/python-tk@3.11/3.11.6/libexec/_tkinter.cpython-311-darwin.so _tkinter.cpython-311-darwin.so
+`
+
 ## this is what school says
 <details>
 <summery>open</summery>
