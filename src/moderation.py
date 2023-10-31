@@ -7,7 +7,6 @@ from datetime import datetime
 import uuid
 
 # TODO make prompt
-moderator = "pieter"
 moderator_id = "f124b7cf-324f-45d9-9352-24181116e7a4"
 
 # get entries of unmoderated comments
