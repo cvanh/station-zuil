@@ -10,11 +10,11 @@ moderation:
 here the comments are censored and uploaded to the database
 
 requirements
-- [] of het bericht is goedgekeurd of afgekeurd;
-- [] de datum en tijd van beoordeling;
-- [] de naam van moderator die het bericht heeft beoordeeld;
-- [] het email-adres van de moderator.
-- [] external database
+- [ ] of het bericht is goedgekeurd of afgekeurd;
+- [ ] de datum en tijd van beoordeling;
+- [ ] de naam van moderator die het bericht heeft beoordeeld;
+- [ ] het email-adres van de moderator.
+- [ ] external database
 
 screen:
 this fetches the censored comments and displays them
@@ -26,7 +26,7 @@ this fetches the censored comments and displays them
 1. create a virtual env by running `python -m venv ./.venv`
 2. activate the virtual env, you can do this on *NIX systems by running `source ./bin/activate` and on windows by deleting windows and downloading linux
 3. once the virtual env is activated install the pip packages by running `pip install -r requirements.txt`
-4. run `cp .env.example .env` and change the openweatherapi key to your own api key 
+4. run this and change the variables .env 
 ```
 cat << EOF
 DBHOST=localhost
@@ -53,27 +53,35 @@ ln -s /opt/homebrew/Cellar/python-tk@3.11/3.11.6/libexec/_tkinter.cpython-311-da
 <summery>checklist</summery>
 
 ##### module 1
-- [] het bericht;
-- [] de datum en tijd van het bericht;
-- [] de naam van de reiziger – als de reiziger geen naam invult, gebruik dan als naam ‘anoniem’;
-- [] het station – deze locatie van de zuil mag in de module zelf worden vastgelegd op basis van een random choice van drie stations. De computer (jouw python computer programma) kiest dan één station uit een lijst
-- [] Download lijst van minimaal drie stations en dat station wordt dan gekoppeld aan de berichten.
+- [x] het bericht;
+- [x] de datum en tijd van het bericht;
+- [x] de naam van de reiziger – als de reiziger geen naam invult, gebruik dan als naam ‘anoniem’;
+- [x] het station – deze locatie van de zuil mag in de module zelf worden vastgelegd op basis van een random choice van drie stations. De computer (jouw python computer programma) kiest dan één station uit een lijst
+- [ ] Download lijst van minimaal drie stations en dat station wordt dan gekoppeld aan de berichten.
 ##### module 2
-
-- [] of het bericht is goedgekeurd of afgekeurd;
-- [] de datum en tijd van beoordeling;
-- [] de naam van moderator die het bericht heeft beoordeeld;
-- [] het email-adres van de moderator.
+- [x] of het bericht is goedgekeurd of afgekeurd;
+- [x] de datum en tijd van beoordeling;
+- [x] de naam van moderator die het bericht heeft beoordeeld;
+- [x] het email-adres van de moderator.
 
 ##### module 3
-- [] De berichten worden getoond op chronologische volgorde van invoeren. Alleen de laatste 5 berichten worden getoond.
-- [] Ook worden de beschikbare faciliteiten op het station getoond op het scherm. Het gaat hierbij om het station waar het bericht is geschreven. Een station heeft één of meer van de volgende faciliteiten: OV-fietsen, lift, toilet en P+R. De beschikbare faciliteiten staan in deze sql-tabel
-- [] Download sql-tabel, deze moet je toevoegen aan je database. Je kunt eventueel gebruik maken van deze iconen
-- [] Download iconen.
-- [] De database staat niet meer lokaal, maar op een virtuele machine in de Azure cloud. Dit is de verbinding naar de richting CSC.
-- [] Ten slotte wordt op het stationshalscherm de weersvoorspelling op de locatie van het station getoond. Het gaat hierbij om het station waar het stationshalscherm hangt. Voor het ophalen van de weersvoorspelling maak je gebruik van de OpenWeatherMap API (https://openweathermap.org/
+- [x] De berichten worden getoond op chronologische volgorde van invoeren. Alleen de laatste 5 berichten worden getoond.
+- [x] Ook worden de beschikbare faciliteiten op het station getoond op het scherm. Het gaat hierbij om het station waar het bericht is geschreven. Een station heeft één of meer van de volgende faciliteiten: OV-fietsen, lift, toilet en P+R. De beschikbare faciliteiten staan in deze sql-tabel
+- [ ] De database staat niet meer lokaal, maar op een virtuele machine in de Azure cloud. Dit is de verbinding naar de richting CSC.
+- [x] Ten slotte wordt op het stationshalscherm de weersvoorspelling op de locatie van het station getoond. Het gaat hierbij om het station waar het stationshalscherm hangt. Voor het ophalen van de weersvoorspelling maak je gebruik van de OpenWeatherMap API (https://openweathermap.org/
 Links to an external site.).
 
+##### non programming
+- [ ] project report
+- [ ] datamodels(conceptueel, logical, physical)
+- [x] git 
+- [ ] comments in code
+- [ ] planning
+- [ ] presentation
+- [ ] reflection
+
 [ link the the casus on canvas](https://canvas.hu.nl/courses/39942/pages/project-casus-en-eisen)
+
+![rubric on canvas image](./assets/Screenshot%202023-11-02%20at%2008.59.00.png)
 [rubric](https://canvas.hu.nl/courses/39942/assignments/261532)
 </details>

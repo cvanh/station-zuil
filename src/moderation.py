@@ -18,7 +18,7 @@ def get_entries():
 
     # we want a simple array for our comments
     array = []
-    for index,row in enumerate(csvreader):
+    for row in enumerate(csvreader):
         # we dont want to add the csv headers to our array so we dont add it, while we are at it we format it to an object for easier handeling
         formatted_comment = {
             "name": row[0],

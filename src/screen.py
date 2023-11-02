@@ -107,7 +107,7 @@ class App(getters):
     def draw_facilities(self,root):
         facilities = tk.Text(root,height=25, width=50)
 
-        # draw all the facilities 
+        # draw all the facilities of the station 
         facilities.insert("end",f"station city: {self.services['station_city']}  \n")
         facilities.insert("end",f"country: {self.services['country']}  \n")
         facilities.insert("end",f"ov bike: {self.services['ov_bike']}  \n")
