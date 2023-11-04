@@ -1,23 +1,16 @@
 ## station zuil
-this is an projct for school
+this is an projct for school.
 
 there are 3 programs;
 
 zuil:
-here the users can enter their comment about the station and saves this info to "comments.csv" 
+here the users can enter their comment about the station and saves this info to an csv
 
 moderation:
-here the comments are censored and uploaded to the database
-
-requirements
-- [ ] of het bericht is goedgekeurd of afgekeurd;
-- [ ] de datum en tijd van beoordeling;
-- [ ] de naam van moderator die het bericht heeft beoordeeld;
-- [ ] het email-adres van de moderator.
-- [ ] external database
+here the comments read from the csv and are censored by an human and uploaded to the database
 
 screen:
-this fetches the censored comments and displays them
+The screen fetches the comments weather and the facilities on the station. It shows this in a nice GUI 
 
 
 
@@ -72,13 +65,13 @@ ln -s /opt/homebrew/Cellar/python-tk@3.11/3.11.6/libexec/_tkinter.cpython-311-da
 Links to an external site.).
 
 ##### non programming
-- [ ] project report
-- [ ] datamodels(conceptueel, logical, physical)
+- [x] datamodels(conceptueel, logical, physical)
 - [x] git 
 - [x] comments in code
-- [ ] planning
+- [x] planning
 - [ ] presentation
 - [ ] reflection
+- [ ] reviews medestudenten 
 
 [ link the the casus on canvas](https://canvas.hu.nl/courses/39942/pages/project-casus-en-eisen)
 
