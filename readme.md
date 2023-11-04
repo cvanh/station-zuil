@@ -75,7 +75,7 @@ Links to an external site.).
 - [ ] project report
 - [ ] datamodels(conceptueel, logical, physical)
 - [x] git 
-- [ ] comments in code
+- [x] comments in code
 - [ ] planning
 - [ ] presentation
 - [ ] reflection
@@ -85,3 +85,82 @@ Links to an external site.).
 ![rubric on canvas image](./assets/Screenshot%202023-11-02%20at%2008.59.00.png)
 [rubric](https://canvas.hu.nl/courses/39942/assignments/261532)
 </details>
+
+## database diagrams
+## concept
+```mermaid
+---
+title: conceptual data model 
+---
+erDiagram
+    MODERATOR o|--o{ COMMENTS : moderates 
+    STATION ||--|| COMMENTS : about
+
+```
+
+### logical
+```mermaid
+---
+title: logical data model 
+---
+erDiagram
+    COMMENTS {
+        uuid id PK
+        char(255) name
+        char(255) station  
+        char(255) message 
+        char(255) status 
+        int time 
+        timestamp last_edit_time
+        uuid last_edit_by 
+    }
+    MODERATORS {
+        uuid id PK
+        char(255) name 
+        char(255) email 
+    }
+    STATION_SERVICE {
+        char(50) station_city PK
+        char(2) country
+        bool ov_bike
+        bool elevator
+        bool toilet
+        bool park_and_ride
+    }
+    COMMENTS o{--|o MODERATORS : moderates 
+    STATION_SERVICE ||--}o COMMENTS: about 
+
+```
+
+### physical
+```mermaid
+---
+title: physical data model 
+---
+erDiagram
+    COMMENTS {
+        uuid id PK,UK 
+        char(255) name "default anoniem"
+        char(255) station  
+        char(255) message 
+        char(255) status 
+        int time 
+        timestamp last_edit_time
+        uuid last_edit_by 
+    }
+    MODERATORS {
+        uuid id PK,UK
+        char(255) name 
+        char(255) email UK
+    }
+    STATION_SERVICE {
+        char(50) station_city PK,UK
+        char(2) country
+        bool ov_bike
+        bool elevator
+        bool toilet
+        bool park_and_ride
+    }
+        COMMENTS o{--|o MODERATORS : moderates 
+    STATION_SERVICE ||--}o COMMENTS: about 
+```
