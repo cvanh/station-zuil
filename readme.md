@@ -41,8 +41,8 @@ macos:
 ln -s /opt/homebrew/Cellar/python-tk@3.11/3.11.6/libexec/_tkinter.cpython-311-darwin.so ./.venv/lib/python3.11/site-packages/_tkinter.cpython-311-darwin.so
 `
 
-#### pushing database container to ghcr
-docker-compose up --force-recreate --build -d
+#### deploying container 
+[read here how to deploy](./database/readme.md)
 
 
 ## this is what school says
@@ -64,7 +64,7 @@ docker-compose up --force-recreate --build -d
 ##### module 3
 - [x] De berichten worden getoond op chronologische volgorde van invoeren. Alleen de laatste 5 berichten worden getoond.
 - [x] Ook worden de beschikbare faciliteiten op het station getoond op het scherm. Het gaat hierbij om het station waar het bericht is geschreven. Een station heeft één of meer van de volgende faciliteiten: OV-fietsen, lift, toilet en P+R. De beschikbare faciliteiten staan in deze sql-tabel
-- [ ] De database staat niet meer lokaal, maar op een virtuele machine in de Azure cloud. Dit is de verbinding naar de richting CSC.
+- [x] De database staat niet meer lokaal, maar op een virtuele machine in de Azure cloud. Dit is de verbinding naar de richting CSC.
 - [x] Ten slotte wordt op het stationshalscherm de weersvoorspelling op de locatie van het station getoond. Het gaat hierbij om het station waar het stationshalscherm hangt. Voor het ophalen van de weersvoorspelling maak je gebruik van de OpenWeatherMap API (https://openweathermap.org/
 Links to an external site.).
 
@@ -73,7 +73,7 @@ Links to an external site.).
 - [x] git 
 - [x] comments in code
 - [x] planning
-- [ ] presentation
+- [x] presentation
 - [ ] reflection
 - [ ] reviews medestudenten 
 
