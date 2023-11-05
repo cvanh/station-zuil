@@ -18,3 +18,5 @@ If you a docker aci context setup and [set that as your default context](https:/
 you can run the application with:
 ```
 docker compose up```
+
+due to issue's on azure you need to manually import dump.sql into the container
