@@ -2,16 +2,16 @@ version: "3.1"
 
 services:
   db:
-    image: postgres
-    container_name: station_db
+    image: registry.hub.docker.com/library/postgres
     restart: always
-    volumes:
-      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    # TODO
+    # volumes:
+      # - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
     environment:
       POSTGRES_PASSWORD: example
       POSTGRES_USER: docker
     ports:
-      - 8306:5432
+      - 5432:5432
 
   adminer:
     image: adminer

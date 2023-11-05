@@ -23,7 +23,7 @@ The screen fetches the comments weather and the facilities on the station. It sh
 ```
 cat << EOF
 DBHOST=localhost
-DBPORT=8306
+DBPORT=5432
 DBNAME=docker
 DBUSER=docker
 DBPASSWORD=example
@@ -40,6 +40,10 @@ link tkinter `
 macos:
 ln -s /opt/homebrew/Cellar/python-tk@3.11/3.11.6/libexec/_tkinter.cpython-311-darwin.so ./.venv/lib/python3.11/site-packages/_tkinter.cpython-311-darwin.so
 `
+
+#### pushing database container to ghcr
+docker-compose up --force-recreate --build -d
+
 
 ## this is what school says
 <details>
